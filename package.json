@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --ignore-watch node_modules src/server.ts",
-    "commit": "git-cz"
+    "dev": "ts-node-dev -r tsconfig-paths/register --ignore-watch node_modules src/server.ts"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
@@ -38,7 +37,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "config": {
