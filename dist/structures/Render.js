@@ -80,10 +80,6 @@ var Render = /** @class */ (function () {
                                 args: [
                                     '--no-sandbox',
                                     '--disable-setuid-sandbox',
-                                    '--disable-gpu',
-                                    '--single-process',
-                                    '--disable-web-security',
-                                    '--disable-dev-profile',
                                 ],
                             })];
                     case 1:

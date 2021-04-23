@@ -30,10 +30,6 @@ export default class Render {
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
-        '--disable-gpu',
-        '--single-process',
-        '--disable-web-security',
-        '--disable-dev-profile',
       ],
     });
 
