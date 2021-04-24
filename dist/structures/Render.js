@@ -52,7 +52,7 @@ var Render = /** @class */ (function () {
                     case 0: return [4 /*yield*/, this.getPage()];
                     case 1:
                         _a = _b.sent(), page = _a.page, browser = _a.browser;
-                        return [4 /*yield*/, page.setViewport({ width: 1920, height: 1080 })];
+                        return [4 /*yield*/, page.setViewport({ width: 1200, height: 630 })];
                     case 2:
                         _b.sent();
                         return [4 /*yield*/, page.goto(this.url, { waitUntil: 'load', timeout: 0 })];
@@ -76,6 +76,7 @@ var Render = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, puppeteer_1.default.launch({
                             args: ['--no-sandbox', '--disable-setuid-sandbox'],
+                            ignoreDefaultArgs: ['--disable-extensions'],
                         })];
                     case 1:
                         browser = _a.sent();

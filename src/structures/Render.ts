@@ -10,7 +10,7 @@ export default class Render {
   async render() {
     const { page, browser } = await this.getPage();
 
-    await page.setViewport({ width: 1920, height: 1080 });
+    await page.setViewport({ width: 1200, height: 630 });
     await page.goto(this.url, { waitUntil: 'load', timeout: 0 });
 
     const screenshot = await page.screenshot({ type: 'jpeg' });
@@ -23,6 +23,7 @@ export default class Render {
   private async getPage() {
     const browser = await puppeteer.launch({
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      ignoreDefaultArgs: ['--disable-extensions'],
     });
 
     const page = await browser.newPage();
