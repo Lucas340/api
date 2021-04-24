@@ -46,21 +46,24 @@ var Render = /** @class */ (function () {
     }
     Render.prototype.render = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var page, screenshot;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var _a, page, browser, screenshot;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0: return [4 /*yield*/, this.getPage()];
                     case 1:
-                        page = _a.sent();
-                        return [4 /*yield*/, page.setViewport({ width: 1200, height: 630 })];
+                        _a = _b.sent(), page = _a.page, browser = _a.browser;
+                        return [4 /*yield*/, page.setViewport({ width: 1920, height: 1080 })];
                     case 2:
-                        _a.sent();
+                        _b.sent();
                         return [4 /*yield*/, page.goto(this.url, { waitUntil: 'load', timeout: 0 })];
                     case 3:
-                        _a.sent();
+                        _b.sent();
                         return [4 /*yield*/, page.screenshot({ type: 'jpeg' })];
                     case 4:
-                        screenshot = _a.sent();
+                        screenshot = _b.sent();
+                        return [4 /*yield*/, browser.close()];
+                    case 5:
+                        _b.sent();
                         return [2 /*return*/, screenshot];
                 }
             });
@@ -68,23 +71,21 @@ var Render = /** @class */ (function () {
     };
     Render.prototype.getPage = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var browser, _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        if (this._page) {
-                            return [2 /*return*/, this._page];
-                        }
-                        return [4 /*yield*/, puppeteer_1.default.launch({
-                                args: ['--no-sandbox', '--disable-setuid-sandbox'],
-                            })];
+            var browser, page;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, puppeteer_1.default.launch({
+                            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+                        })];
                     case 1:
-                        browser = _b.sent();
-                        _a = this;
+                        browser = _a.sent();
                         return [4 /*yield*/, browser.newPage()];
                     case 2:
-                        _a._page = _b.sent();
-                        return [2 /*return*/, this._page];
+                        page = _a.sent();
+                        return [2 /*return*/, {
+                                page: page,
+                                browser: browser,
+                            }];
                 }
             });
         });
