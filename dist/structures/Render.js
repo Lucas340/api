@@ -75,13 +75,7 @@ var Render = /** @class */ (function () {
                         if (this._page) {
                             return [2 /*return*/, this._page];
                         }
-                        return [4 /*yield*/, puppeteer_1.default.launch({
-                                headless: true,
-                                args: [
-                                    '--no-sandbox',
-                                    '--disable-setuid-sandbox',
-                                ],
-                            })];
+                        return [4 /*yield*/, this.getBrowser()];
                     case 1:
                         browser = _b.sent();
                         _a = this;
@@ -89,6 +83,27 @@ var Render = /** @class */ (function () {
                     case 2:
                         _a._page = _b.sent();
                         return [2 /*return*/, this._page];
+                }
+            });
+        });
+    };
+    Render.prototype.getBrowser = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        if (this._browser) {
+                            return [2 /*return*/, this._browser];
+                        }
+                        _a = this;
+                        return [4 /*yield*/, puppeteer_1.default.launch({
+                                headless: true,
+                                args: ['--no-sandbox', '--disable-setuid-sandbox'],
+                            })];
+                    case 1:
+                        _a._browser = _b.sent();
+                        return [2 /*return*/, this._browser];
                 }
             });
         });

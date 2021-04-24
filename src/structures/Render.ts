@@ -1,9 +1,11 @@
-import puppeteer, { Page } from 'puppeteer';
+import puppeteer, { Page, Browser } from 'puppeteer';
 
 export default class Render {
   private url: string;
 
   private _page: Page | undefined;
+
+  private _browser: Browser | undefined;
 
   constructor(url: string) {
     this.url = url;
@@ -25,16 +27,23 @@ export default class Render {
       return this._page;
     }
 
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-      ],
-    });
+    const browser = await this.getBrowser();
 
     this._page = await browser.newPage();
 
     return this._page;
+  }
+
+  private async getBrowser() {
+    if (this._browser) {
+      return this._browser;
+    }
+
+    this._browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
+
+    return this._browser;
   }
 }
