@@ -99,7 +99,7 @@ var Render = /** @class */ (function () {
                         _a = this;
                         return [4 /*yield*/, puppeteer_1.default.launch({
                                 headless: true,
-                                args: ['--no-sandbox', '--disable-setuid-sandbox'],
+                                args: ['--no-sandbox'],
                             })];
                     case 1:
                         _a._browser = _b.sent();
